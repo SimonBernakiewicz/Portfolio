@@ -1,0 +1,77 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Simon Bernakiewicz — Portfolio</title>
+
+  <!-- Lock theme before paint -->
+  <script>
+    (() => {
+      const saved = localStorage.getItem('theme');
+      const system = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = saved || system;
+    })();
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <button id="burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <h1 class="logo" tabindex="0">Simon Bernakiewicz</h1>
+    <nav>
+      <button id="back" hidden>← Back</button>
+      <button id="random" disabled>Random Photo</button>
+      <button id="theme" aria-label="Toggle theme">☀️</button>
+    </nav>
+  </header>
+
+  <!-- SIDE MENU -->
+  <aside id="side">
+    <button id="side-close" aria-label="Close menu">×</button>
+    <ul>
+      <li><a href="#" id="nav-photos">Photos</a></li>
+      <li><a href="#" id="nav-gear">Gear</a></li>
+    </ul>
+  </aside>
+  <div id="overlay"></div>
+
+  <!-- MAIN PANELS -->
+  <main>
+    <section class="intro">
+      <p id="intro-main">Select a category to begin.</p>
+      <p id="intro-sub">Select an image to enlarge.</p>
+    </section>
+    <section id="cats"   class="panel gallery"></section>
+    <section id="subs"   class="panel gallery"></section>
+    <section id="photos" class="panel gallery"></section>
+
+    <!-- GEAR PAGE -->
+    <section id="gear" class="panel">
+      <h2>My Camera Gear</h2>
+      <ul>
+        <li><strong>Camera Body:</strong> Olympus OM-1 Mark I</li>
+        <li><strong>Telephoto Lens:</strong> Olympus M.Zuiko 150-400 mm F4.5 1.25× TC</li>
+        <li><strong>Normal Lens:</strong> Olympus 14-150 mm F4-5.6</li>
+        <li><strong>Macro Lens:</strong> Olympus 60 mm F2.8 Macro</li>
+        <li><strong>Tripod:</strong> Sirui Traveler 7C</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox">
+    <button id="lb-close" aria-label="Close">×</button>
+    <div id="zoom">
+      <img id="lb-img" alt="Expanded photo">
+    </div>
+  </div>
+
+  <script src="scripts.js" defer></script>
+</body>
+</html>
